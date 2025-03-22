@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive 3D Solar System Navigation Simulator</title>
+  <!-- External libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+  <!-- Link to the CSS file -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="info">Interactive 3D Solar System Navigation Simulator</div>
+  
+  <div id="controls">
+    <h3>Visualization Controls</h3>
+    <div class="slider-container">
+      <label for="scale">Scale: <span id="scale-value" class="slider-value">1x</span></label>
+      <input type="range" id="scale" min="0.1" max="10" step="0.1" value="1">
+    </div>
+    <h3>View Options</h3>
+    <select id="view-dropdown">
+      <option value="heliocentric">Heliocentric</option>
+      <option value="geocentric">Geocentric</option>
+      <option value="mercury">Mercury</option>
+      <option value="venus">Venus</option>
+      <option value="earth">Earth</option>
+      <option value="mars">Mars</option>
+      <option value="jupiter">Jupiter</option>
+      <option value="saturn">Saturn</option>
+      <option value="uranus">Uranus</option>
+      <option value="neptune">Neptune</option>
+    </select>
+    <h3>Trajectory Planning</h3>
+    <div class="slider-container">
+      <label>Launch Velocity: <span id="velocity-value" class="slider-value">30 km/s</span></label>
+      <input type="range" id="velocity" min="10" max="100" step="1" value="30">
+    </div>
+    <div class="slider-container">
+      <label>Launch Angle: <span id="angle-value" class="slider-value">0°</span></label>
+      <input type="range" id="angle" min="0" max="360" step="1" value="0">
+    </div>
+    <button id="plan-trajectory">Plan Trajectory</button>
+    <button id="clear-trajectory">Clear</button>
+  </div>
+  
+  <div id="mission-select">
+    <h3>Historic Space Missions</h3>
+    <select id="mission-dropdown">
+      <option value="none">Select a Mission</option>
+      <option value="apollo11">1969: Apollo 11</option>
+      <option value="venera7">1970: Venera 7</option>
+      <option value="apollo13">1970: Apollo 13</option>
+      <option value="voyager1">1977: Voyager 1</option>
+      <option value="voyager2">1977: Voyager 2</option>
+      <option value="hubble">1990: Hubble Space Telescope</option>
+      <option value="pathfinder">1996: Mars Pathfinder</option>
+      <option value="cassini">1997: Cassini-Huygens</option>
+      <option value="kepler">2009: Kepler</option>
+      <option value="jwst">2021: James Webb Space Telescope</option>
+    </select>
+    <button id="load-mission">Load Mission</button>
+    <h3>Orbital Mechanics</h3>
+    <!-- Only N-body mechanics available -->
+    <select id="gravity-model">
+      <option value="n-body">N-body Calculation</option>
+    </select>
+    <button id="fullscreen-btn" class="control-button">Toggle Fullscreen</button>
+  </div>
+  
+  <div id="simulation-controls">
+    <button id="play">Play</button>
+    <button id="pause">Pause</button>
+    <button id="rewind">« Decrease</button>
+    <button id="show-orbit">Show Orbit</button>
+    <button id="forward">Fast Forward »</button>
+    <div class="slider-container" style="display:inline-block; width:200px; margin-left:20px;">
+      <input type="range" id="speed" min="0.1" max="10" step="0.1" value="1">
+      <label>Simulation Speed: <span id="speed-value" class="slider-value">1x</span></label>
+    </div>
+  </div>
+  
+  <div class="tooltip" id="tooltip"></div>
+
+  <!-- Link to the external JavaScript file -->
+  <script src="main.js"></script>
+</body>
+</html>

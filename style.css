@@ -1,0 +1,221 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+#info {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  text-align: center;
+  z-index: 100;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+#controls, #mission-select, #simulation-controls {
+  position: absolute;
+  z-index: 100;
+  background-color: rgba(30, 30, 30, 0.8);
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+#controls {
+  top: 80px;
+  left: 20px;
+  max-width: 280px;
+}
+
+#mission-select {
+  top: 80px;
+  right: 20px;
+  max-width: 280px;
+}
+
+#simulation-controls {
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  max-width: 800px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 24px;
+}
+
+h3 {
+  margin: 0 0 14px 0;
+  color: #4ade80;
+  font-weight: 500;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
+}
+
+button {
+  background-color: rgba(74, 222, 128, 0.2);
+  border: 1px solid rgba(74, 222, 128, 0.4);
+  color: #4ade80;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  backdrop-filter: blur(4px);
+}
+
+button:hover {
+  background-color: rgba(74, 222, 128, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 222, 128, 0.2);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+#fullscreen-btn {
+  background-color: rgba(74, 139, 222, 0.2);
+  border: 1px solid rgba(74, 139, 222, 0.4);
+  color: #4a8bde;
+}
+
+#fullscreen-btn:hover {
+  background-color: rgba(74, 139, 222, 0.3);
+  box-shadow: 0 4px 12px rgba(74, 139, 222, 0.2);
+}
+
+select, input[type="range"] {
+  width: 100%;
+  padding: 8px 10px;
+  background-color: rgba(60, 60, 60, 0.6);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.2s ease;
+  margin-bottom: 10px;
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  padding-right: 30px;
+}
+
+select:hover, input[type="range"]:hover {
+  background-color: rgba(70, 70, 70, 0.8);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 6px;
+  background: linear-gradient(90deg, #134e5e 0%, #71b280 100%);
+  border-radius: 8px;
+  padding: 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #4ade80;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  background: #6ee7a0;
+}
+
+.slider-container {
+  margin-bottom: 16px;
+}
+
+.slider-container label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.slider-value {
+  color: #4ade80;
+  font-weight: bold;
+  margin-left: 4px;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: rgba(30, 30, 30, 0.95);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  pointer-events: none;
+  z-index: 1000;
+  display: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  max-width: 200px;
+  transition: opacity 0.3s ease;
+}
+
+/* Add smooth transitions for planet hover */
+.planet-hover {
+  transition: all 0.3s ease;
+}
+
+.planet-hover:hover {
+  filter: brightness(1.5);
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  #controls, #mission-select {
+    max-width: 220px;
+    padding: 12px;
+  }
+  
+  #simulation-controls {
+    padding: 12px;
+    bottom: 15px;
+  }
+  
+  button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+  
+  #info {
+    font-size: 1.2rem;
+  }
+}
